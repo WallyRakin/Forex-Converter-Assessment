@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <form action="/" method="post">
+        <label for="convert-from">Convert From: </label><select id="convert-from" name="convert-from">
+            {% for item in data %}
+            {% if not (item == 'USD')%}
+            <option value="{{ item }}">{{ item }}</option>
+            {% else %}
+            <option value="{{ item }}" selected>{{ item }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <label for="convert-to">Convert To: </label><select id="convert-to" name="convert-to">
+            {% for item in data %}
+            {% if not (item == 'EUR')%}
+            <option value="{{ item }}">{{ item }}</option>
+            {% else %}
+            <option value="{{ item }}" selected>{{ item }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <label for="convert-amount">Amount: </label><input id="convert-amount" name="convert-amount" required="True"
+            type="number" min="0" placeholder="0">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <button>Convert</button>
+    </form>
+</body>
+
+</html>
