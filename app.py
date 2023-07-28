@@ -19,7 +19,7 @@ def index():
             data = round((requests.get(
                 f'https://api.exchangerate.host/convert?from={convert_from}&to={convert_to}&amount={convert_amount}').json())['result'], 2)
         except TypeError:
-            flash(f'Cannot convert {convert_from} to {convert_to}')
+            flash(f'Cannot convert {convert_from} to {convert_to}', 'error')
             print(f'Cannot convert {convert_from} to {convert_to}')
         else:
             flash(

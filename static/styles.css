@@ -47,6 +47,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-p {
+p.success {
     color: green;
+}
+
+p.error {
+    color: red;
 }
